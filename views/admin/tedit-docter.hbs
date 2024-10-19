@@ -1,0 +1,125 @@
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h4 class="page-title">Update Doctor Details</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <form action="/admin/tedit-docter/{{docter._id}}" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Docter Name <span class="text-danger">*</span></label>
+                                <input name="Docter_Name" class="form-control" value="{{docter.Docter_Name}}"
+                                    type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Qualifications <span class="text-danger">*</span></label>
+                                <input name="Qualifications" class="form-control" value="{{docter.Qualifications}}"
+                                    type="text" required>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Phone Number <span class="text-danger">*</span></label>
+                                <input name="Phone_Number" class="form-control" type="text"
+                                    value="{{docter.Phone_Number}}" required>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Departments Name<span class="text-danger">*</span></label>
+
+                                <select class="form-control" name="Department_Name">
+                                    {{#each department }}
+                                    <option value="{{this.Name}}">{{this.Name}}</option>
+                                    {{/each}}
+                                </select>
+                                 <p style="color: red;">Please Select The Department </p>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Starting Time <span class="text-danger">*</span></label>
+                                <input name="Stime" class="form-control" type="time" value="{{docter.Stime}}" required>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Ending Time Time <span class="text-danger">*</span></label>
+                                <input name="Etime" class="form-control" type="time" value="{{docter.Etime}}" required>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+
+                            <label>Docter Image<span class="text-danger">*</span></label> <br>
+
+
+                            <div class="row">
+
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <img src="/docter-images/{{docter._id}}.jpg" alt=""
+                                            style="width: 100px;height: 100px;" id="imgView">
+                                    </div>
+                                </div>
+                                <div class="col-sm-10">
+                                    <div class="form-group">
+                                        <input type="file" name="image" class="form-control mt-5"
+                                            onchange="viewImage(event)" >
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <input type="text" name="status" value="Team" hidden>
+                        <div class="form-group">
+                            <label>Docter Available Date <span class="text-danger">*</span></label>
+                            <br>
+                            <select name="Docter_Available" id="Docter_Available" class="form-select bg-white border-1"
+                                multiple>
+                                <option value="Sundays">All Sundays</option>
+                                <option value="Mondays">All Mondays</option>
+                                <option value="Tuesdays">All Tuesdays</option>
+                                <option value="Wednesdays">All Wednesdays</option>
+                                <option value="Thursdays">All Thursdays</option>
+                                <option value="Fridays">All Fridays</option>
+                                <option value="Saturdays">All Saturdays</option>
+                            </select>
+                            <p style="color: red;">Please Select The Booking Date </p>
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="m-t-20 text-center">
+                        <button class="btn btn-primary submit-btn">Update Doctor</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-overlay" data-reff=""></div>
+
+
+    <script>
+        function viewImage(event) {
+            document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0])
+        }
+    </script>
